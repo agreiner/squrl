@@ -87,3 +87,5 @@ Here is a configuration that specifies a custom "from" clause to use with a hand
               }
               'owners': {
                     ...
+                    
+If you want to add your own check for statements to the unsqurl() function, you can do that as well. Uncomment the code that is demarcated as `# ------ custom checks ---------` and write your own customized custom_check.py file that defines a `check_custom` function. The function must return a dictionary with a return code, an error message if the return code is not 200, and the resulting sql (e.g., `result = {"returncode": '200', "error": "", "sql": "name LIKE 'alfred'"}`). Be sure to uncomment the import statement for custom_check.
