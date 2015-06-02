@@ -476,3 +476,27 @@ def unsqurl(instring):
         return result
 
     return result
+
+
+def squrlup(statement):
+    # take an SQL where clause and turn it into a SQURL string
+    statement = statement.replace(', ',',')
+    statement = statement.replace("'", "")
+    statement = statement.replace(';', '')
+    statement = statement.replace('*', ' TIMES ')
+    statement = statement.replace('/', ' DIV ')
+    statement = statement.replace('+', ' PLUS ')
+    statement = statement.replace('-', ' MINUS ')
+    statement = statement.replace('NOT LIKE', 'NOTLIKE')
+    statement = statement.replace('IS NULL', 'ISNULL')
+    statement = statement.replace('IS NOT NULL', 'ISNOTNULL')
+    statement = statement.replace('>', ' GT ')
+    statement = statement.replace('<', ' LT ')
+    statement = statement.replace('>=', ' GTE ')
+    statement = statement.replace('<=', ' LTE ')
+    statement = statement.replace('=', ' EQ ')
+    statement = statement.replace('!=', ' NEQ ')
+    statement = re.sub(r'\s+', '/', statement)
+    return statement
+
+
